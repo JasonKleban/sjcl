@@ -14,7 +14,9 @@
     "url": "https://github.com/bitwiseshiftleft/sjcl.git"
   },
   "scripts": {
-    "test": "make test",
+    "build-default": "uglifyjs --compress --mangle --beautify max_line_len=260,beautify=false --output \"./sjcl.js\" -- core/sjcl.js core/aes.js core/bitArray.js core/codecString.js core/codecHex.js core/codecBase32.js core/codecBase64.js core/sha256.js core/ccm.js core/ocb2.js core/gcm.js core/hmac.js core/pbkdf2.js core/random.js core/convenience.js core/exports.js",
+    "build-all": "uglifyjs --compress --mangle --beautify max_line_len=260,beautify=false --output \"./sjcl.js\" -- core/sjcl.js core/aes.js core/bitArray.js core/codecString.js core/codecHex.js core/codecBase32.js core/codecBase64.js core/codecBytes.js core/codecZ85.js core/sha256.js core/sha512.js core/sha1.js core/ccm.js core/ctr.js core/cbc.js core/ocb2.js core/ocb2progressive.js core/gcm.js core/hmac.js core/pbkdf2.js core/scrypt.js core/random.js core/convenience.js core/bn.js core/ecc.js core/srp.js core/ccmArrayBuffer.js core/codecArrayBuffer.js core/ripemd160.js core/exports.js",
+    "test": "node test/run_tests_node.js browserTest/nodeUtil.js sjcl.js test/test.js test/ccm_vectors.js test/ccm_arraybuffer_test.js  test/codec_arraybuffer_test.js  test/aes_vectors.js test/aes_test.js  test/bitArray_vectors.js test/bitArray_test.js  test/bn_vectors.js test/bn_test.js  test/cbc_vectors.js test/cbc_test.js   test/ctr_vectors.js test/ctr_test.js   test/ccm_vectors.js test/ccm_test.js   test/ecc_vectors.js test/ecc_test.js  test/ecc_conv.js  test/ecdsa_test.js test/ecdsa_vectors.js test/ecdh_test.js  test/gcm_vectors.js test/gcm_test.js   test/hmac_vectors.js test/hmac_test.js  test/json_test.js  test/ocb2_vectors.js test/ocb2_test.js   test/ocb2progressive_test.js   test/pbkdf2_test.js test/scrypt_vectors.js test/scrypt_test.js  test/ripemd160_vectors.js test/ripemd160_test.js  test/sha1_vectors.js test/sha1_test.js  test/sha1_vectors_long_messages.js test/sha1_test_long_messages.js  test/sha1_huge_test_messages.js test/sha1_huge_test.js  test/sha256_vectors.js test/sha256_test.js  test/sha256_huge_test_messages.js test/sha256_huge_test.js  test/sha256_vectors_long_messages.js test/sha256_test_long_messages.js  test/sha256_test_brute_force.js  test/sha512_vectors.js test/sha512_test.js  test/sha512_vectors_long_messages.js test/sha512_test_long_messages.js  test/sha512_huge_test_messages.js test/sha512_huge_test.js  test/sha512_test_brute_force.js  test/srp_vectors.js test/srp_test.js  test/z85_vectors.js test/z85_test.js",
     "jsdoc": "jsdoc -c jsdoc.conf.json",
     "lint": "eslint . || true"
   },
@@ -23,6 +25,7 @@
   },
   "devDependencies": {
     "eslint": "^2.11.1",
-    "jsdoc": "3.4.0"
+    "jsdoc": "3.4.0",
+    "uglify-js": "^3.0.24"
   }
 }
